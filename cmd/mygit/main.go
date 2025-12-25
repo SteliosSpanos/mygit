@@ -15,6 +15,7 @@ func main() {
 		fmt.Println("   init          Initialize a new repository")
 		fmt.Println("   hash-object   Hash and store a file")
 		fmt.Println("   cat-file      Display an object's content")
+		fmt.Println("   add           Add file to staging area")
 		os.Exit(1)
 	}
 
@@ -46,6 +47,17 @@ func main() {
 
 		hash := os.Args[2]
 		if err := commands.CatFile(hash); err != nil {
+			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+			os.Exit(1)
+		}
+	case "add":
+		if len(os.Args) < 3 {
+			fmt.Fprintf(os.Stderr, "Usage: mygit add <file>\n")
+			os.Exit(1)
+		}
+
+		filePath := os.Args[2]
+		if err := commands.Add(filePath); err != nil {
 			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 			os.Exit(1)
 		}
