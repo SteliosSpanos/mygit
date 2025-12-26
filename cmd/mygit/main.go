@@ -16,6 +16,7 @@ func main() {
 		fmt.Println("   hash-object   Hash and store a file")
 		fmt.Println("   cat-file      Display an object's content")
 		fmt.Println("   add           Add file to staging area")
+		fmt.Println("   commit        Create a commit from staged files")
 		os.Exit(1)
 	}
 
@@ -58,6 +59,17 @@ func main() {
 
 		filePath := os.Args[2]
 		if err := commands.Add(filePath); err != nil {
+			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+			os.Exit(1)
+		}
+	case "commit":
+		if len(os.Args) < 4 || os.Args[2] != "-m" {
+			fmt.Fprintf(os.Stderr, "Usage: mygit commit -m \"message\"\n")
+			os.Exit(1)
+		}
+
+		message := os.Args[3]
+		if err := commands.Commit(message); err != nil {
 			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 			os.Exit(1)
 		}
