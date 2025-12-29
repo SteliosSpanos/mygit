@@ -133,7 +133,6 @@ mygit/
 │   └── tree/              # Tree building utilities
 │       └── builder.go
 ├── go.mod
-├── CLAUDE.md              # Development guidelines
 └── README.md
 ```
 
@@ -216,13 +215,3 @@ Potential additions to extend functionality:
 ## License
 
 This project is intended for educational purposes.
-
-## Contributing
-
-This is a learning project. Feel free to fork and experiment with your own implementations.
-
-## References
-
-- [Pro Git Book - Git Internals](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain)
-- [Git Object Model](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects)
-- [Building Git by James Coglan](https://shop.jcoglan.com/building-git/)
